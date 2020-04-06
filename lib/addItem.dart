@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:foodfficient/datePicker.dart';
 
-void addShoppingItem(BuildContext context) async {
+void addItem(BuildContext context) async {
     await showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -8,7 +9,7 @@ void addShoppingItem(BuildContext context) async {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0)),
           child: Container(
-            height: 180,
+            height: 400,
             child: Padding(
               padding: const EdgeInsets.all(12.0),
               child: Column(
@@ -36,6 +37,32 @@ void addShoppingItem(BuildContext context) async {
                       ),
                     ),
                   ),
+                  // SizedBox(height: 5.0,),
+                  new Expanded(
+                    child: new TextField(
+                      decoration: new InputDecoration(
+                        labelText: 'Item Qty:',
+                        hintText: 'eg. 2',
+                      ),
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                  // SizedBox(width: 5.0,),
+                  new Expanded(
+                    child: new TextField(
+                      decoration: new InputDecoration(
+                        labelText: 'Qty Type:',
+                        hintText: 'eg. pieces',
+                      ),
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                  // SizedBox(height: 5.0,),
+                  ExpirationDateField(),
                   ButtonTheme(
                     child: ButtonBar(
                       alignment: MainAxisAlignment.center,
