@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:foodfficient/models/shoppingHelper.dart';
+import 'package:foodfficient/models/shoppingModel.dart';
 import 'package:foodfficient/widgets/addShopping.dart';
+import 'package:sqflite/sqlite_api.dart';
 
 class ShoppingPage extends StatelessWidget {
-  const ShoppingPage({Key key}) : super(key: key);
+  ShoppingPage({Key key}) : super(key: key);
+  final ShoppingHelper _shoppingHelper = ShoppingHelper();
+  List<ShoppingList> results;
   
   @override
   Widget build(BuildContext context) {
+    if(){
+
+    }
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -32,15 +40,8 @@ class ShoppingPage extends StatelessWidget {
             ),
             ButtonBar(
               children: <Widget>[
-                RaisedButton(
-                  child: Text(
-                      'Edit',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ),
-                    ),
-                  // child: Icon(Icons.edit),
+                FlatButton(
+                  child: Icon(Icons.edit),
                   onPressed: () {/* ... */},
                 ),
                 FlatButton(

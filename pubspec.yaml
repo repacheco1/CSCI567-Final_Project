@@ -27,6 +27,7 @@ dependencies:
   flutter_rounded_date_picker:
   sqflite:
   path_provider:
+  fluttertoast:
 
 dev_dependencies:
   flutter_test:

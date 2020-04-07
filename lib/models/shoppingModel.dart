@@ -3,7 +3,7 @@ class ShoppingList{
   String _name;
   String _notes;
 
-  ShoppingList(this._id, this._name, this._notes);
+  ShoppingList(this._name, this._notes);
 
   ShoppingList.map(dynamic obj){
     this._id = obj['id'];
