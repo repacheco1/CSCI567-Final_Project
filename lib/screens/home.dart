@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:foodfficient/widgets/addItem.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key key}) : super(key: key);
+class HomePage extends StatefulWidget{
+  HomePage({Key key}) : super(key: key);
+  @override
+  State<StatefulWidget>createState(){
+    
+    return HomePageState();
+  }
+}
+
+class HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {

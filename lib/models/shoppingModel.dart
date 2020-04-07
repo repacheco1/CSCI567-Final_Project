@@ -5,19 +5,27 @@ class ShoppingList{
 
   ShoppingList(this._name, this._notes);
 
-  ShoppingList.map(dynamic obj){
-    this._id = obj['id'];
-    this._name = obj['name'];
-    this._notes = obj['notes'];
-  }
+  ShoppingList.withId(this._id, this._name, this._notes);
 
   int get id => _id;
   String get name => _name;
   String get notes => _notes;
 
+  set name(String newName){
+    if(newName.length <= 100){
+      this._name = newName;
+    }
+  }
+
+  set notes(String newNotes){
+    if(newNotes.length <= 255){
+      this._name = newNotes;
+    }
+  }
+
   Map<String, dynamic> toMap() {
-    var map = new Map<String, dynamic>();
-    if (_id != null) {
+    var map = Map<String, dynamic>();
+    if (id != null) {
       map['id'] = _id;
     }
     map['name'] = _name;
@@ -26,9 +34,10 @@ class ShoppingList{
     return map;
   }
 
-  ShoppingList.fromMap(Map<String, dynamic> map) {
+  ShoppingList.fromMapObject(Map<String, dynamic> map) {
     this._id = map['id'];
     this._name = map['name'];
     this._notes = map['notes'];
   }
+
 }

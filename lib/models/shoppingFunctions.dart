@@ -1,33 +1,33 @@
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:foodfficient/models/shoppingModel.dart';
-import 'package:foodfficient/models/shoppingHelper.dart';
+// import 'package:flutter/material.dart';
+// import 'package:foodfficient/models/shoppingHelper.dart';
+// import 'package:foodfficient/models/shoppingModel.dart';
+// import 'package:foodfficient/widgets/addShopping.dart';
+// import 'package:sqflite/sqflite.dart';
 
-class ShoppingFunctions{
-  List shoppingItems;
-  var sdb = ShoppingHelper();
+// ShoppingHelper databaseHelper = ShoppingHelper();
 
-  Future createItem(String name, String notes) async{
-    var item = ShoppingList(name, notes);
-    await sdb.saveShoppingItem(item);
-    Fluttertoast.showToast(msg: 'Item has been saved.');
-  }
-  Future getAllShoppingItems() async{
-    shoppingItems = await sdb.getAllShoppingItems();
-    shoppingItems.forEach((shoppingItems) => print(shoppingItems));
-  }
 
-  Future updateShoppingItem(int id, String name, String notes) async{
-    ShoppingList updateShoppingItem = ShoppingList.fromMap({
-      'id': id,
-      'name': name,
-      'notes': notes
-       });
-    await sdb.updateShoppingItem(updateShoppingItem);
-  }
-  
-  Future deleteShoppingItems(int id) async{
-    await sdb.deleteShoppingItem(id);
-    shoppingItems = await sdb.getAllShoppingItems();
-    shoppingItems.forEach((shoppingItems) => print(shoppingItems));
-  }
-}
+// void _delete(BuildContext context, ShoppingList item) async {
+//   int result = await databaseHelper.deleteShoppingItem(item.id);
+//   if (result != 0) {
+//     _showSnackBar(context, 'Item Deleted Successfully.');
+//     updateListView();
+//   }
+// }
+
+// void _showSnackBar(BuildContext context, String message) {
+//   final snackBar = SnackBar(content: Text(message));
+//   Scaffold.of(context).showSnackBar(snackBar);
+// }
+
+// // void navigateToDetail(ShoppingList item, String title) async {
+// //   bool result =
+// //       await Navigator.push(context, MaterialPageRoute(builder: (context) {
+// //     return TodoDetail(item, title);
+// //   }));
+
+// //   if (result == true) {
+// //     updateListView();
+// //   }
+// // }
+

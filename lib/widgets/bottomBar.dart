@@ -9,8 +9,7 @@ class BottomBar extends StatefulWidget {
       _BottomBar();
 }
 
-class _BottomBar
-    extends State<BottomBar> {
+class _BottomBar extends State<BottomBar> {
   final List<Widget> pages = [
     HomePage(
       key: PageStorageKey('HomePage'),

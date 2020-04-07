@@ -92,5 +92,6 @@ void addItem(BuildContext context) async {
             ),
           ),
         );
-      });
+      }
+    );
   }
