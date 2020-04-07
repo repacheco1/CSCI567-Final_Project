@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:foodfficient/home.dart';
-import 'package:foodfficient/shopping.dart';
-import 'package:foodfficient/settings.dart';
+import 'package:foodfficient/screens/home.dart';
+import 'package:foodfficient/screens/shopping.dart';
+import 'package:foodfficient/screens/settings.dart';
 
 class BottomBar extends StatefulWidget {
   @override

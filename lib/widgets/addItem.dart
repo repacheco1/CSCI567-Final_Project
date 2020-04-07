@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:foodfficient/datePicker.dart';
+import 'package:foodfficient/utils/datePicker.dart';
+import 'package:foodfficient/utils/typeMenu.dart';
 
 void addItem(BuildContext context) async {
     await showDialog(
@@ -37,7 +38,6 @@ void addItem(BuildContext context) async {
                       ),
                     ),
                   ),
-                  // SizedBox(height: 5.0,),
                   new Expanded(
                     child: new TextField(
                       decoration: new InputDecoration(
@@ -49,19 +49,7 @@ void addItem(BuildContext context) async {
                       ),
                     ),
                   ),
-                  // SizedBox(width: 5.0,),
-                  new Expanded(
-                    child: new TextField(
-                      decoration: new InputDecoration(
-                        labelText: 'Qty Type:',
-                        hintText: 'eg. pieces',
-                      ),
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
-                    ),
-                  ),
-                  // SizedBox(height: 5.0,),
+                  TypeMenu(),
                   ExpirationDateField(),
                   ButtonTheme(
                     child: ButtonBar(

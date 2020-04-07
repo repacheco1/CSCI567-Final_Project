@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodfficient/bottomBar.dart';
+import 'package:foodfficient/widgets/bottomBar.dart';
 
 void main() => runApp(MyApp());
 

@@ -25,6 +25,8 @@ dependencies:
   cupertino_icons: ^0.1.2
   datetime_picker_formfield:
   flutter_rounded_date_picker:
+  sqflite:
+  path_provider:
 
 dev_dependencies:
   flutter_test:
