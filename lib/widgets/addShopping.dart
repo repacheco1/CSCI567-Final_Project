@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodfficient/models/shoppingModel.dart';
-// import 'package:foodfficient/screens/shopping.dart';
 import 'package:foodfficient/models/shoppingHelper.dart';
-// import 'package:foodfficient/screens/shopping.dart';
-// import 'package:foodfficient/models/shoppingFunctions.dart';
-// import 'package:foodfficient/widgets/addItem.dart';
-// import 'package:foodfficient/models/shoppingFunctions.dart';
 
 class AddShoppingItem{
   final controllerName = TextEditingController();

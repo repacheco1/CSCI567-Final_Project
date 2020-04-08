@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodfficient/models/shoppingFunctions.dart';
 import 'package:foodfficient/models/shoppingModel.dart';
-// import 'package:foodfficient/screens/shopping.dart';
-// import 'package:foodfficient/models/shoppingHelper.dart';
-// import 'package:foodfficient/screens/shopping.dart';
 import 'package:foodfficient/widgets/addShopping.dart';
 
 class ShoppingList extends StatelessWidget{

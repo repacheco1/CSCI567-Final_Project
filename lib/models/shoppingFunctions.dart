@@ -1,8 +1,5 @@
-// import 'package:flutter/material.dart';
 import 'package:foodfficient/models/shoppingHelper.dart';
 import 'package:foodfficient/models/shoppingModel.dart';
-// import 'package:foodfficient/widgets/addShopping.dart';
-// import 'package:sqflite/sqflite.dart';
 
 abstract class ShoppingContract{
     void screenUpdate();

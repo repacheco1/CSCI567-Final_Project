@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:foodfficient/models/shoppingFunctions.dart';
-// import 'package:foodfficient/models/shoppingHelper.dart';
 import 'package:foodfficient/models/shoppingModel.dart';
 import 'package:foodfficient/utils/shoppingListView.dart';
 import 'package:foodfficient/widgets/addShopping.dart';
-// import 'package:foodfficient/models/shoppingFunctions.dart';
-// import 'package:sqflite/sqflite.dart';
 
 class ShoppingPage extends StatefulWidget{
   ShoppingPage({Key key}) : super(key: key);
