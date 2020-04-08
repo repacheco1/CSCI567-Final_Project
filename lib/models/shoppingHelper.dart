@@ -66,7 +66,7 @@ class ShoppingHelper{
       item.setShoppingId(list[i]['id']);
       shoppingItems.add(item);
     }
-    print(shoppingItems.length); //delete this?
+    // print(shoppingItems.length); //delete this?
 
     return shoppingItems;
   }

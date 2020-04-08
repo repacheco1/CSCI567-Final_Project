@@ -60,7 +60,6 @@ void addItem(BuildContext context) async {
                       ),
                     ),
                   ),
-                  // TypeMenu(),
                   ExpirationDateField(),
                   ButtonTheme(
                     child: ButtonBar(

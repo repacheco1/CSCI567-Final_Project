@@ -26,8 +26,13 @@ class ShoppingList extends StatelessWidget{
                   ListTile(
                     leading: CircleAvatar(
                       radius: 30.0,
-                      child: new Text(getShortName(basket[index])),
-                      backgroundColor: Color(0x90388e3c),
+                      child: new Text(
+                        getShortName(basket[index]),
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                      backgroundColor: Colors.teal,
                     ),
                     title: Text(
                       basket[index].name,
@@ -42,21 +47,26 @@ class ShoppingList extends StatelessWidget{
                       ),
                     ),
                   ),
-                  ButtonBar(
-                    children: <Widget>[
-                      FlatButton(
-                        child: Icon(Icons.edit),
-                        onPressed: () => edit(basket[index], context),
-                      ),
-                      FlatButton(
-                        child: Icon(
-                          Icons.delete,
-                          color: Colors.red,
+                  new Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children :<Widget>[
+                      ButtonBar(
+                        children: <Widget>[
+                          FlatButton(
+                            child: Icon(Icons.edit),
+                            onPressed: () => edit(basket[index], context),
                           ),
-                        onPressed: () => shoppingPresenter.delete(basket[index]),
+                          FlatButton(
+                            child: Icon(
+                              Icons.delete,
+                              color: Colors.red,
+                              ),
+                            onPressed: () => shoppingPresenter.delete(basket[index]),
+                          ),
+                        ],
                       ),
                     ],
-                  ),
+                  )
                 ],
               ),
             ),

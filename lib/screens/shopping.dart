@@ -37,7 +37,7 @@ class ShoppingListPage extends State<ShoppingPage> implements ShoppingContract{
         future: shoppingPresenter.getShopping(),
         builder: (context, snapshot){
           if(snapshot.hasError){
-            print(snapshot.error);
+            // print(snapshot.error);
           }
           var data = snapshot.data;
           return snapshot.hasData ? new ShoppingList(data, shoppingPresenter) : new Center(child: new CircularProgressIndicator(),);
