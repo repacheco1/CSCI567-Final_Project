@@ -94,7 +94,7 @@ class ShoppingHelper{
   }
   
   Future close() async{
-    var sdbClient = await sdb;
-    return sdbClient.close();
+    var dbClient = await sdb;
+    return dbClient.close();
   }
 }

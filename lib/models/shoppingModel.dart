@@ -43,11 +43,5 @@ class Shopping{
   void setShoppingId(int id){
     this._id = id;
   }
-
-  // Shopping.fromMapObject(Map<String, dynamic> map) {
-  //   this._id = map['id'];
-  //   this._name = map['name'];
-  //   this._notes = map['notes'];
-  // }
-
+  
 }

@@ -8,9 +8,6 @@ class ShoppingPage extends StatefulWidget{
   ShoppingPage({Key key}) : super(key: key);
   @override
   ShoppingListPage createState() => new ShoppingListPage();
-  // State<StatefulWidget>createState(){
-  //   return ShoppingListPage();
-  // }
 }
 
 class ShoppingListPage extends State<ShoppingPage> implements ShoppingContract{

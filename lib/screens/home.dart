@@ -1,75 +1,67 @@
 import 'package:flutter/material.dart';
+import 'package:foodfficient/models/pantryFunctions.dart';
+import 'package:foodfficient/models/pantryModel.dart';
+import 'package:foodfficient/utils/pantryListView.dart';
 import 'package:foodfficient/widgets/addItem.dart';
 
 class HomePage extends StatefulWidget{
   HomePage({Key key}) : super(key: key);
   @override
-  State<StatefulWidget>createState(){
-    
-    return HomePageState();
-  }
+  HomeListPage createState() => new HomeListPage();
 }
 
-class HomePageState extends State<HomePage> {
+class HomeListPage extends State<HomePage> implements PantryContract{
+  PantryPresenter pantryPresenter;
 
   @override
+  void initState(){
+    super.initState();
+    pantryPresenter = new PantryPresenter(this);
+  }
+
+  displayRecord() {
+    setState(() {});
+  }
+  
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return new Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text("Home"),
       ),
-      body: Card(
-        child: Column(  
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            ListTile(
-              leading: Icon(Icons.local_grocery_store),
-              title: Text(
-                'Milk 2 Gallons',
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-              subtitle: Text(
-                'Exp. Date: April 17, 2020',
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-            ),
-            ButtonBar(
-              children: <Widget>[
-                FlatButton(
-                  child: Icon(Icons.edit),
-                  onPressed: () {/* ... */},
-                ),
-                FlatButton(
-                  child: Icon(
-                    Icons.delete,
-                    color: Colors.red,
-                    ),
-                  onPressed: () {/* ... */},
-                ),
-              ],
-            ),
-          ],
-        ),
+      body: new FutureBuilder<List<Pantry>>(
+        future: pantryPresenter.getPantry(),
+        builder: (context, snapshot){
+          if(snapshot.hasError){
+            // print(snapshot.error);
+          }
+          var data = snapshot.data;
+          return snapshot.hasData ? new PantryList(data, pantryPresenter) : new Center(child: new CircularProgressIndicator(),);
+        }
       ),
-      // body: ListView.builder(itemBuilder: (context, index) {
-      //   return ListTile(
-      //     title: Text('Lorem Ipsum'),
-      //     subtitle: Text('$index'),
-      //   );
-      // }),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          addItem(context);
-          // Add your onPressed code here!
-        },
+        onPressed: _openAddPantry,
         child: Icon(Icons.add),
         backgroundColor: Colors.green,
       ),
     );
   }
+
+  Future _openAddPantry() async{
+    showDialog(
+      context: context,
+      builder: (BuildContext context) => new AddPantryItem().buildPantryDialog(context, this, false, null),
+    );
+
+    setState(() {
+      
+    });
+  }
+
+  @override
+  void screenUpdate() {
+    setState(() {});
+  }
+
 }

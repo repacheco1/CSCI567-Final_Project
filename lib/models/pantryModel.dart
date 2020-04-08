@@ -1,25 +1,36 @@
-class PantryList{
+class Pantry{
   int _id;
   String _name;
-  int _qty;
-  String _type;
+  String _qtyType;
   String _expDate;
 
-  PantryList(this._id, this._name, this._qty, this._type, this._expDate);
+  Pantry(this._name, this._qtyType, this._expDate);
 
-  PantryList.map(dynamic obj){
+  Pantry.withId(this._id, this._name, this._qtyType, this._expDate);
+
+  Pantry.map(dynamic obj){
     this._id = obj['id'];
     this._name = obj['name'];
-    this._qty = obj['qty'];
-    this._type = obj['type'];
+    this._qtyType = obj['qtyType'];
     this._expDate = obj['expDate'];
   }
 
   int get id => _id;
   String get name => _name;
-  int get qty => _qty;
-  String get type => _type;
+  String get qtyType => _qtyType;
   String get expDate => _expDate;
+
+  set name(String newName){
+    if(newName.length <= 100){
+      this._name = newName;
+    }
+  }
+
+  set qtyType(String newType){
+    if(newType.length <= 100){
+      this._qtyType = newType;
+    }
+  }
 
 
   Map<String, dynamic> toMap() {
@@ -28,18 +39,13 @@ class PantryList{
       map['id'] = _id;
     }
     map['name'] = _name;
-    map['qty'] = _qty;
-    map['type'] = _type;
+    map['qtyType'] = _qtyType;
     map['expDate'] = _expDate;
 
     return map;
   }
-
-  PantryList.fromMap(Map<String, dynamic> map) {
-    this._id = map['id'];
-    this._name = map['name'];
-    this._qty = map['qty'];
-    this._type = map['type'];
-    this._expDate = map['expDate'];
+  void setPantryId(int id){
+    this._id = id;
   }
+
 }
