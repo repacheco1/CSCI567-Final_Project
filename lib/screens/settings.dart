@@ -31,7 +31,10 @@ class SettingsPageState extends State<SettingsPage> {
                 ),
               ),
             ),
-            Divider(),
+            Divider(
+              thickness: 5.0,
+              color: Colors.transparent,
+            ),
             SwitchListTile(
               title: Text(
                 'Notify me when close to a store:',

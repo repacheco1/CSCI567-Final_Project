@@ -16,7 +16,8 @@ class AddShoppingItem{
     }
     return Dialog(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.0)),
+        borderRadius: BorderRadius.circular(20.0)
+      ),
       child: Container(
         height: 220,
         child: Padding(

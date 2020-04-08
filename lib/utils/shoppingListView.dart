@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foodfficient/models/shoppingFunctions.dart';
 import 'package:foodfficient/models/shoppingModel.dart';
 import 'package:foodfficient/widgets/addShopping.dart';
+// import 'package:foodfficient/widgets/customAlertDialog.dart';
 
 class ShoppingList extends StatelessWidget{
   final List<Shopping> basket;
@@ -61,7 +62,52 @@ class ShoppingList extends StatelessWidget{
                               Icons.delete,
                               color: Colors.red,
                               ),
-                            onPressed: () => shoppingPresenter.delete(basket[index]),
+                              // 
+                            onPressed: (){
+                              showDialog(
+                                context: context,
+                                builder:(BuildContext context){
+                                  return AlertDialog(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20.0)
+                                    ),
+                                    title: Text(
+                                      'Delete from shopping list?',
+                                    ),
+                                    content: Text(
+                                      'This will delete ${basket[index].name.toLowerCase()} from your shopping list.'
+                                    ),
+                                    actions: <Widget>[
+                                      RaisedButton(
+                                        child: Text(
+                                          'Cancel'
+                                        ),
+                                        onPressed: (){
+                                          Navigator.pop(context);
+                                        },
+                                        color: Colors.orange,
+                                        textColor: Colors.white,
+                                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                                        splashColor: Colors.grey,
+                                      ),
+                                      RaisedButton(
+                                        child: Text(
+                                          'Delete'
+                                        ),
+                                        onPressed: (){
+                                          shoppingPresenter.delete(basket[index]);
+                                          Navigator.pop(context);
+                                        },
+                                        color: Colors.red,
+                                        textColor: Colors.white,
+                                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                                        splashColor: Colors.grey,
+                                      ),
+                                    ],
+                                  );
+                                }
+                              );
+                            },
                           ),
                         ],
                       ),
@@ -75,7 +121,6 @@ class ShoppingList extends StatelessWidget{
       }
     );
   }
-
 
   displayRecord() {
     shoppingPresenter.updateScreen();
@@ -98,3 +143,4 @@ class ShoppingList extends StatelessWidget{
     return shortName;
   }
 }
+

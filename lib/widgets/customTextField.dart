@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 
 class CustomTextField{
   Widget customTextField(String label, String hint, TextEditingController input, [bool isFocus]){
-    // if(isFocus == null){
-    //   isFocus = false;
-    // }
     var custom = new Padding(
       padding: const EdgeInsets.all(0.0),
       child: TextFormField(

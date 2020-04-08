@@ -19,6 +19,7 @@ class ShoppingPresenter{
   Future<List<Shopping>> getShopping(){
     return sdb.getShopping();
   }
+  
   updateScreen(){
     _view.screenUpdate();
   }
