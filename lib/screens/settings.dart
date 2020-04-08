@@ -10,6 +10,7 @@ class SettingsPage extends StatefulWidget{
 }
 
 class SettingsPageState extends State<SettingsPage> {
+  bool isSwitched = false;
 
   @override
   Widget build(BuildContext context) {
@@ -19,38 +20,33 @@ class SettingsPageState extends State<SettingsPage> {
         title: Text("Settings"),
       ),
       body: Card(
-        child: Column(  
+        child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            ListTile(
-              leading: Icon(Icons.local_grocery_store),
-              title: Text(
-                'Milk 2 Gallons',
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-              subtitle: Text(
-                'Exp. Date: April 17, 2020',
+            Center(
+              child: Text(
+                'Notifications',
                 style: TextStyle(
                   fontSize: 20,
                 ),
               ),
             ),
-            ButtonBar(
-              children: <Widget>[
-                FlatButton(
-                  child: Icon(Icons.edit),
-                  onPressed: () {/* ... */},
+            Divider(),
+            SwitchListTile(
+              title: Text(
+                'Notify me when close to a store:',
+                style: TextStyle(
+                  fontSize: 20,
                 ),
-                FlatButton(
-                  child: Icon(
-                    Icons.delete,
-                    color: Colors.red,
-                    ),
-                  onPressed: () {/* ... */},
-                ),
-              ],
+              ),
+              value: isSwitched,
+              onChanged: (value){
+                setState(() {
+                  isSwitched = value;
+                });
+              }, 
+              activeColor: Colors.green,
+              secondary: Icon(Icons.shopping_cart),
             ),
           ],
         ),

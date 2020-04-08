@@ -29,6 +29,7 @@ void addItem(BuildContext context) async {
                   new Expanded(
                     child: new TextFormField(
                       autofocus: true,
+                      textCapitalization: TextCapitalization.sentences,
                       decoration: new InputDecoration(
                         labelText: 'Item Name:', 
                         hintText: 'eg. Avocado'
@@ -40,6 +41,7 @@ void addItem(BuildContext context) async {
                   ),
                   new Expanded(
                     child: new TextFormField(
+                      textCapitalization: TextCapitalization.sentences,
                       decoration: new InputDecoration(
                         labelText: 'Item Qty:',
                         hintText: 'eg. 2',
@@ -51,6 +53,7 @@ void addItem(BuildContext context) async {
                   ),
                   new Expanded(
                     child: new TextFormField(
+                      textCapitalization: TextCapitalization.sentences,
                       decoration: new InputDecoration(
                         labelText: 'Qty Type:',
                         hintText: 'eg. Cans',
