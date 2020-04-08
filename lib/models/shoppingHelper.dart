@@ -1,143 +1,100 @@
-import 'dart:io';
+import 'dart:io' as io;
 import 'dart:async';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
-// import 'package:path/path.dart';
+import 'package:path/path.dart';
 import 'package:foodfficient/models/shoppingModel.dart';
 
 class ShoppingHelper{
-  static ShoppingHelper _shoppingHelper;
-  static Database _shoppingDatabase; //shopping db
+  static final ShoppingHelper _shoppingInstance = new ShoppingHelper.internal();
+  factory ShoppingHelper() => _shoppingInstance;
+  static Database _sdb;
 
-  final String tableShopping = 'shoppingTable';
-  final String columnId = 'id';
-  final String columnName = 'name';
-  final String columnNotes = 'notes';
-
-  ShoppingHelper._createInstance();
-
-  factory ShoppingHelper(){
-    if(_shoppingHelper == null){
-      _shoppingHelper = ShoppingHelper._createInstance();
+  Future<Database> get sdb async{
+    if(_sdb != null){
+      return _sdb;
     }
+    _sdb = await initDb();
 
-    return _shoppingHelper;
+    return _sdb;
   }
 
-  Future<Database> get shoppingDatabase async{
-    if(_shoppingDatabase == null){
-      _shoppingDatabase = await initializeDatabase();
-    }
-    
-    return _shoppingDatabase;
-  }
+  ShoppingHelper.internal();
 
-  Future<Database> initializeDatabase() async{
-    Directory directory = await getApplicationDocumentsDirectory();
-    String path = directory.path + 'shopping.db';
-
-    var shoppingDatabase = await openDatabase(
-      path, 
-      version: 1,
-      onCreate: _createDB
-    );
-
-    return shoppingDatabase;
-  }
-
-  void _createDB(Database shoppingDB, int newVersion) async{
-    await shoppingDB.execute(
-      'CREATE TABLE $tableShopping($columnId INTEGER PRIMARY KEY, $columnName TEXT, $columnNotes TEXT)'
-    );
-  }
-
-  Future<List<Map<String, dynamic>>> getShoppingMapList() async{
-    Database shoppingDB = await this.shoppingDatabase;
-    var result = await shoppingDB.query(tableShopping);
-
-    return result;
-  }
-
-  Future<int> insertShoppingItem(ShoppingList shopping) async{
-    Database shoppingDB = await this.shoppingDatabase;
-    var result = await shoppingDB.insert(
-      tableShopping, 
-      shopping.toMap());
-
-    return result;
-  }
-
-  Future<int> updateShoppingItem(ShoppingList shopping) async{
-    var shoppingDB = await shoppingDatabase;
-    var result = await shoppingDB.update(
-      tableShopping,
-      shopping.toMap(),
-      where: '$columnId = ?',
-      whereArgs: [shopping.id]
-    );
-
-    return result;
-  }
-
-  Future<int> deleteShoppingItem(int id) async{
-    var shoppingDB = await shoppingDatabase;
-    int result = await shoppingDB.rawDelete(
-      'DELETE FROM $tableShopping WHERE $columnId = $id'
-    );
-
-    return result;
-  }
-
-  Future<int> getCount() async {
-    Database shoppingDB = await this.shoppingDatabase;
-    List<Map<String, dynamic>> x = await shoppingDB.rawQuery(
-      'SELECT COUNT (*) from $tableShopping'
+  initDb() async{
+    io.Directory documentsDirectory = await getApplicationDocumentsDirectory();
+    String path = join(
+      documentsDirectory.path, 
+      'shopping.db'
       );
-    int result = Sqflite.firstIntValue(x);
+    var shoppingDb = await openDatabase(
+      path,
+      version: 1,
+      onCreate: _onCreate
+    );
+
+    return shoppingDb;
+  }
+
+  void _onCreate(Database sdb, int version) async{
+    await sdb.execute(
+      'CREATE TABLE Shopping(id INTEGER PRIMARY KEY, name TEXT, notes TEXT)'
+    );
+  }
+
+  Future<int> saveShopping(Shopping shopping) async{
+    var dbClient = await sdb;
+    int result = await dbClient.insert(
+      'Shopping', 
+      shopping.toMap()
+    );
 
     return result;
   }
 
-  Future<List<ShoppingList>> getShoppingList() async{
-    var shoppingMapList = await getShoppingMapList();
-    int count = shoppingMapList.length;
-
-    List<ShoppingList> shoppingMap = List<ShoppingList>();
-
-    for(int i = 0; i < count; i++){
-      shoppingMap.add(
-        ShoppingList.fromMapObject(shoppingMapList[i]));
+  Future<List<Shopping>> getShopping() async{
+    var dbClient = await sdb;
+    List<Map> list = await dbClient.rawQuery(
+      'SELECT * FROM Shopping'
+    );
+    List<Shopping> shoppingItems = new List();
+    for(int i = 0; i < list.length; i++){
+      var item  = new Shopping(
+        list[i]['name'], 
+        list[i]['notes']
+      );
+      item.setShoppingId(list[i]['id']);
+      shoppingItems.add(item);
     }
-    return shoppingMap;
+    print(shoppingItems.length);
+
+    return shoppingItems;
   }
-  //-----------------------------------------------
-  // Future<List> getAllShoppingItems() async{
-  //   var sdbClient = await shoppingDatabase;
-  //   var result = await sdbClient.query(
-  //     tableShopping, 
-  //     columns: [columnId, columnName, columnNotes]);
 
-  //   return result.toList();
-  // }
+  Future<int> deleteShoppingItem(Shopping shopping) async{
+    var dbClient = await sdb;
+    int result = await dbClient.rawDelete(
+      'DELETE FROM Shopping WHERE id = ?',
+      [shopping.id]
+    );
 
-  // Future<ShoppingList> getShoppingItem(int id) async {
-  //   var sdbClient = await shoppingDatabase;
-  //   List<Map> result = await sdbClient.query(
-  //     tableShopping,
-  //     columns: [columnId, columnName, columnNotes],
-  //     where: '$columnId = ?',
-  //     whereArgs: [id]
-  //   );
+    return result;
+  }
 
-  //   if(result.length > 0){
-  //     return new ShoppingList.fromMap(result.first);
-  //   }
+  Future<bool> update(Shopping shopping) async{
+    var dbClient = await sdb;
+    int result = await dbClient.update(
+      'Shopping',
+      shopping.toMap(),
+      where: 'id = ?',
+      whereArgs: <int>[shopping.id]
+    );
 
-  //   return null;
-  // }
-  //-------------------------------------------------
+    return result > 0 ? true : false;
+  }
+  
   Future close() async{
-    var sdbClient = await shoppingDatabase;
+    var sdbClient = await sdb;
     return sdbClient.close();
   }
 }

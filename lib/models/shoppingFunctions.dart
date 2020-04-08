@@ -1,33 +1,28 @@
 // import 'package:flutter/material.dart';
-// import 'package:foodfficient/models/shoppingHelper.dart';
-// import 'package:foodfficient/models/shoppingModel.dart';
+import 'package:foodfficient/models/shoppingHelper.dart';
+import 'package:foodfficient/models/shoppingModel.dart';
 // import 'package:foodfficient/widgets/addShopping.dart';
 // import 'package:sqflite/sqflite.dart';
 
-// ShoppingHelper databaseHelper = ShoppingHelper();
+abstract class ShoppingContract{
+    void screenUpdate();
+}
 
+class ShoppingPresenter{
+  ShoppingContract _view;
+  var sdb = new ShoppingHelper();
+  ShoppingPresenter(this._view);
 
-// void _delete(BuildContext context, ShoppingList item) async {
-//   int result = await databaseHelper.deleteShoppingItem(item.id);
-//   if (result != 0) {
-//     _showSnackBar(context, 'Item Deleted Successfully.');
-//     updateListView();
-//   }
-// }
+  delete(Shopping shopping){
+    var sdb = new ShoppingHelper();
+    sdb.deleteShoppingItem(shopping);
+    updateScreen();
+  }
 
-// void _showSnackBar(BuildContext context, String message) {
-//   final snackBar = SnackBar(content: Text(message));
-//   Scaffold.of(context).showSnackBar(snackBar);
-// }
-
-// // void navigateToDetail(ShoppingList item, String title) async {
-// //   bool result =
-// //       await Navigator.push(context, MaterialPageRoute(builder: (context) {
-// //     return TodoDetail(item, title);
-// //   }));
-
-// //   if (result == true) {
-// //     updateListView();
-// //   }
-// // }
-
+  Future<List<Shopping>> getShopping(){
+    return sdb.getShopping();
+  }
+  updateScreen(){
+    _view.screenUpdate();
+  }
+}
