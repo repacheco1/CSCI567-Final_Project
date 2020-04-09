@@ -18,6 +18,7 @@ class AddPantryItem{
       controllerQtyType.text = pantry.qtyType;
       controllerExpDate.text = pantry.expDate;
     }
+    
     return Dialog(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20.0)

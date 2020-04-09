@@ -44,6 +44,7 @@ class Pantry{
 
     return map;
   }
+  
   void setPantryId(int id){
     this._id = id;
   }

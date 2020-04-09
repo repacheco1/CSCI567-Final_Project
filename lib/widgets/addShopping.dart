@@ -15,6 +15,7 @@ class AddShoppingItem{
       controllerName.text = shopping.name;
       controllerNotes.text = shopping.notes;
     }
+
     return Dialog(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20.0)
@@ -36,7 +37,6 @@ class AddShoppingItem{
                   ),
                 ),
               ),
-              // String label, String hint, TextEditingController input, bool isFocus
               CustomTextField().customTextField('Item Name:', 'eg. Avocado', controllerName, true),
               CustomTextField().customTextField('Item Notes:', 'eg. To Make avocado toast', controllerNotes),
               ButtonTheme(

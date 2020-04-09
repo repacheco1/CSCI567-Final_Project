@@ -147,5 +147,6 @@ class ShoppingList extends StatelessWidget{
     }
     return shortName;
   }
+  
 }
 
