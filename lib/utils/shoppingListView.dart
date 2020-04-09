@@ -43,7 +43,7 @@ class ShoppingList extends StatelessWidget{
                     subtitle: Text(
                       basket[index].notes, //modify this function if cards are broken
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 18,
                       ),
                     ),
                   ),
@@ -86,7 +86,7 @@ class ShoppingList extends StatelessWidget{
                                         },
                                         color: Colors.blueGrey,
                                         textColor: Colors.white,
-                                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                                        // padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                                         splashColor: Colors.grey,
                                       ),
                                       RaisedButton(
@@ -99,7 +99,7 @@ class ShoppingList extends StatelessWidget{
                                         },
                                         color: Colors.red,
                                         textColor: Colors.white,
-                                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                                        // padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                                         splashColor: Colors.grey,
                                       ),
                                     ],

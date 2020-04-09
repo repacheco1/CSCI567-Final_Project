@@ -71,6 +71,24 @@ class ShoppingHelper{
     return shoppingItems;
   }
 
+  Future<List<Shopping>> getShoppingAlpha() async{
+    var dbClient = await sdb;
+    List<Map> list = await dbClient.rawQuery(
+      'SELECT * FROM Shopping ORDER BY name ASC'  //'SELECT * FROM Shopping'
+    );
+    List<Shopping> shoppingItems = new List();
+    for(int i = 0; i < list.length; i++){
+      var item  = new Shopping(
+        list[i]['name'], 
+        list[i]['notes']
+      );
+      item.setShoppingId(list[i]['id']);
+      shoppingItems.add(item);
+    }
+
+    return shoppingItems;
+  }
+
   Future<int> deleteShoppingItem(Shopping shopping) async{
     var dbClient = await sdb;
     int result = await dbClient.rawDelete(

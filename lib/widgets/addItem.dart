@@ -39,8 +39,8 @@ class AddPantryItem{
                 ),
               ),
               // String label, String hint, TextEditingController input, bool isFocus
-              CustomTextField().customTextField('Item Name;', 'eg. Milk', controllerName, true),
-              CustomTextField().customTextField('Item Quantity;', 'eg.2 Gallons', controllerQtyType),
+              CustomTextField().customTextField('Item Name:', 'eg. Milk', controllerName, true),
+              CustomTextField().customTextField('Item Quantity:', 'eg.2 Gallons', controllerQtyType),
               ExpirationDateField().build(context, controllerExpDate),
               ButtonTheme(
                 child: ButtonBar(

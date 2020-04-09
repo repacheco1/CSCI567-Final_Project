@@ -43,7 +43,7 @@ class PantryList extends StatelessWidget{
                     subtitle: Text(
                       'Exp Date: ${cabinet[index].expDate}', //modify this function if cards are broken
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 18,
                       ),
                     ),
                   ),
@@ -74,7 +74,7 @@ class PantryList extends StatelessWidget{
                                       'Delete from pantry list?',
                                     ),
                                     content: Text(
-                                      'This will delete ${cabinet[index].name.toLowerCase()} from your pantry list.'
+                                      'This will delete "${cabinet[index].name.toLowerCase()}" from your pantry list.'
                                     ),
                                     actions: <Widget>[
                                       RaisedButton(

@@ -3,7 +3,7 @@ import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:intl/intl.dart';
 
 class ExpirationDateField {
-  final format = DateFormat('yMMMMd');
+  final format = DateFormat('yyyy-MM-dd');
   Widget build(BuildContext context, TextEditingController input) {
     return Column(children: <Widget>[
       Text(
@@ -14,7 +14,7 @@ class ExpirationDateField {
       ),
       DateTimeField(
         decoration: new InputDecoration(
-          hintText: 'eg. ${DateFormat.yMMMMd().format(DateTime.now())}',
+          hintText: 'eg. ${DateFormat('yyyy-MM-dd').format(DateTime.now())}',
         ),
         style: TextStyle(
           fontSize: 18,

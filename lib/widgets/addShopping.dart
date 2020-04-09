@@ -36,8 +36,8 @@ class AddShoppingItem{
                 ),
               ),
               // String label, String hint, TextEditingController input, bool isFocus
-              CustomTextField().customTextField('Item Name;', 'eg. Avocado', controllerName, true),
-              CustomTextField().customTextField('Item Notes;', 'eg. To Make avocado toast', controllerNotes),
+              CustomTextField().customTextField('Item Name:', 'eg. Avocado', controllerName, true),
+              CustomTextField().customTextField('Item Notes:', 'eg. To Make avocado toast', controllerNotes),
               ButtonTheme(
                 child: ButtonBar(
                   alignment: MainAxisAlignment.center,

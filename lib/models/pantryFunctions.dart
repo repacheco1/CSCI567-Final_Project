@@ -17,7 +17,7 @@ class PantryPresenter{
   }
 
   Future<List<Pantry>> getPantry(){
-    return pdb.getPantry();
+    return pdb.getPantryDate();
   }
   
   updateScreen(){

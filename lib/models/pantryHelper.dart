@@ -71,6 +71,44 @@ class PantryHelper{
     return shoppingItems;
   }
 
+  Future<List<Pantry>> getPantryAlpha() async{
+    var dbClient = await pdb;
+    List<Map> list = await dbClient.rawQuery(
+      'SELECT * FROM Pantry ORDER BY name ASC'
+    );
+    List<Pantry> shoppingItems = new List();
+    for(int i = 0; i < list.length; i++){
+      var item  = new Pantry(
+        list[i]['name'],
+        list[i]['qtyType'],
+        list[i]['expDate']
+      );
+      item.setPantryId(list[i]['id']);
+      shoppingItems.add(item);
+    }
+
+    return shoppingItems;
+  }
+
+  Future<List<Pantry>> getPantryDate() async{
+    var dbClient = await pdb;
+    List<Map> list = await dbClient.rawQuery(
+      'SELECT * FROM Pantry ORDER BY expDate, name'
+    );
+    List<Pantry> shoppingItems = new List();
+    for(int i = 0; i < list.length; i++){
+      var item  = new Pantry(
+        list[i]['name'],
+        list[i]['qtyType'],
+        list[i]['expDate']
+      );
+      item.setPantryId(list[i]['id']);
+      shoppingItems.add(item);
+    }
+
+    return shoppingItems;
+  }
+
   Future<int> deletePantryItem(Pantry pantry) async{
     var dbClient = await pdb;
     int result = await dbClient.rawDelete(
