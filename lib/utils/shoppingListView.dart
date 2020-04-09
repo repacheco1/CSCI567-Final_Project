@@ -26,7 +26,7 @@ class ShoppingList extends StatelessWidget{
                 children: <Widget>[
                   ListTile(
                     leading: CircleAvatar(
-                      radius: 30.0,
+                      radius: 25.0,
                       child: new Text(
                         getShortName(basket[index]),
                         style: TextStyle(
@@ -47,77 +47,78 @@ class ShoppingList extends StatelessWidget{
                         fontSize: 18,
                       ),
                     ),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        MaterialButton(
+                          minWidth: 5,
+                          child: Icon(
+                            Icons.edit,
+                            color: Colors.orange,
+                            ),
+                          onPressed: () => edit(basket[index], context),
+                        ),
+                        MaterialButton(
+                          minWidth: 5,
+                          child: Icon(
+                            Icons.delete,
+                            color: Colors.red,
+                            ),
+                            // 
+                          onPressed: (){
+                            showDialog(
+                              context: context,
+                              builder:(BuildContext context){
+                                return AlertDialog(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0)
+                                  ),
+                                  title: Text(
+                                    'Delete from shopping list?',
+                                  ),
+                                  content: Text(
+                                    'This will delete "${basket[index].name.toLowerCase()}" from your shopping list.'
+                                  ),
+                                  actions: <Widget>[
+                                    RaisedButton(
+                                      child: Text(
+                                        'Cancel'
+                                      ),
+                                      onPressed: (){
+                                        Navigator.pop(context);
+                                      },
+                                      color: Colors.blueGrey,
+                                      textColor: Colors.white,
+                                      padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                                      splashColor: Colors.grey,
+                                    ),
+                                    SizedBox(width: 5),
+                                    RaisedButton(
+                                      child: Text(
+                                        'Delete'
+                                      ),
+                                      onPressed: (){
+                                        shoppingPresenter.delete(basket[index]);
+                                        Navigator.pop(context);
+                                        Fluttertoast.showToast(
+                                          msg: '${basket[index].name} has been deleted.'
+                                        );
+                                      },
+                                      color: Colors.red,
+                                      textColor: Colors.white,
+                                      padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                                      splashColor: Colors.grey,
+                                    ),
+                                    SizedBox(width: 5),
+                                  ],
+                                );
+                              }
+                            );
+                          },
+                        ),
+                      ],
+                    ),
                   ),
-                  new Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children :<Widget>[
-                      ButtonBar(
-                        children: <Widget>[
-                          FlatButton(
-                            child: Icon(Icons.edit),
-                            onPressed: () => edit(basket[index], context),
-                          ),
-                          FlatButton(
-                            child: Icon(
-                              Icons.delete,
-                              color: Colors.red,
-                              ),
-                              // 
-                            onPressed: (){
-                              showDialog(
-                                context: context,
-                                builder:(BuildContext context){
-                                  return AlertDialog(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20.0)
-                                    ),
-                                    title: Text(
-                                      'Delete from shopping list?',
-                                    ),
-                                    content: Text(
-                                      'This will delete ${basket[index].name.toLowerCase()} from your shopping list.'
-                                    ),
-                                    actions: <Widget>[
-                                      RaisedButton(
-                                        child: Text(
-                                          'Cancel'
-                                        ),
-                                        onPressed: (){
-                                          Navigator.pop(context);
-                                        },
-                                        color: Colors.blueGrey,
-                                        textColor: Colors.white,
-                                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                                        splashColor: Colors.grey,
-                                      ),
-                                      SizedBox(width: 5),
-                                      RaisedButton(
-                                        child: Text(
-                                          'Delete'
-                                        ),
-                                        onPressed: (){
-                                          shoppingPresenter.delete(basket[index]);
-                                          Navigator.pop(context);
-                                          Fluttertoast.showToast(
-                                            msg: '${basket[index].name} has been deleted.'
-                                          );
-                                        },
-                                        color: Colors.red,
-                                        textColor: Colors.white,
-                                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                                        splashColor: Colors.grey,
-                                      ),
-                                      SizedBox(width: 5),
-                                    ],
-                                  );
-                                }
-                              );
-                            },
-                          ),
-                        ],
-                      ),
-                    ],
-                  )
                 ],
               ),
             ),
