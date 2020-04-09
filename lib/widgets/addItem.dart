@@ -3,6 +3,7 @@ import 'package:foodfficient/models/pantryModel.dart';
 import 'package:foodfficient/models/pantryHelper.dart';
 import 'package:foodfficient/widgets/customTextField.dart';
 import 'package:foodfficient/utils/datePicker.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class AddPantryItem{
   final controllerName = TextEditingController();
@@ -72,6 +73,9 @@ class AddPantryItem{
                         addRecord(isEdit);
                         _myPantryListPage.displayRecord();
                         Navigator.pop(context);
+                        Fluttertoast.showToast(
+                          msg: '${controllerName.text} has been saved.'
+                        );
                       },
                       color: Colors.blue,
                       textColor: Colors.white,

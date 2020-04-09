@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foodfficient/models/pantryFunctions.dart';
 import 'package:foodfficient/models/pantryModel.dart';
 import 'package:foodfficient/widgets/addItem.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class PantryList extends StatelessWidget{
   final List<Pantry> cabinet;
@@ -66,43 +67,50 @@ class PantryList extends StatelessWidget{
                               showDialog(
                                 context: context,
                                 builder:(BuildContext context){
-                                  return AlertDialog(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20.0)
-                                    ),
-                                    title: Text(
-                                      'Delete from pantry list?',
-                                    ),
-                                    content: Text(
-                                      'This will delete "${cabinet[index].name.toLowerCase()}" from your pantry list.'
-                                    ),
-                                    actions: <Widget>[
-                                      RaisedButton(
-                                        child: Text(
-                                          'Cancel'
-                                        ),
-                                        onPressed: (){
-                                          Navigator.pop(context);
-                                        },
-                                        color: Colors.blueGrey,
-                                        textColor: Colors.white,
-                                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                                        splashColor: Colors.grey,
+                                  return Center(
+                                    child: AlertDialog(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(20.0)
                                       ),
-                                      RaisedButton(
-                                        child: Text(
-                                          'Delete'
-                                        ),
-                                        onPressed: (){
-                                          pantryPresenter.delete(cabinet[index]);
-                                          Navigator.pop(context);
-                                        },
-                                        color: Colors.red,
-                                        textColor: Colors.white,
-                                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                                        splashColor: Colors.grey,
+                                      title: Text(
+                                        'Delete from pantry list?',
                                       ),
-                                    ],
+                                      content: Text(
+                                        'This will delete "${cabinet[index].name.toLowerCase()}" from your pantry list.'
+                                      ),
+                                      actions: <Widget>[
+                                        RaisedButton(
+                                          child: Text(
+                                            'Cancel'
+                                          ),
+                                          onPressed: (){
+                                            Navigator.pop(context);
+                                          },
+                                          color: Colors.blueGrey,
+                                          textColor: Colors.white,
+                                          padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                                          splashColor: Colors.grey,
+                                        ),
+                                        SizedBox(width: 5),
+                                        RaisedButton(
+                                          child: Text(
+                                            'Delete'
+                                          ),
+                                          onPressed: (){
+                                            pantryPresenter.delete(cabinet[index]);
+                                            Navigator.pop(context);
+                                            Fluttertoast.showToast(
+                                              msg: '${cabinet[index].name} has been deleted.'
+                                            );
+                                          },
+                                          color: Colors.red,
+                                          textColor: Colors.white,
+                                          padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                                          splashColor: Colors.grey,
+                                        ),
+                                        SizedBox(width: 5),
+                                      ],
+                                    ),
                                   );
                                 }
                               );

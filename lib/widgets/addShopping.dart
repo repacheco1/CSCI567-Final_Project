@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foodfficient/models/shoppingModel.dart';
 import 'package:foodfficient/models/shoppingHelper.dart';
 import 'package:foodfficient/widgets/customTextField.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class AddShoppingItem{
   final controllerName = TextEditingController();
@@ -68,6 +69,9 @@ class AddShoppingItem{
                         addRecord(isEdit);
                         _myShoppingListPage.displayRecord();
                         Navigator.pop(context);
+                        Fluttertoast.showToast(
+                          msg: '${controllerName.text} has been saved.'
+                        );
                       },
                       color: Colors.blue,
                       textColor: Colors.white,
