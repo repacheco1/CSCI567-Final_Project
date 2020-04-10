@@ -25,6 +25,7 @@ class AddPantryItem{
       ),
       child: Container(
         height: 300,
+        width: 400,
         child: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Column(

@@ -50,21 +50,18 @@ class PantryList extends StatelessWidget{
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        MaterialButton(
-                          minWidth: 5,
-                          child: Icon(
+                        IconButton(
+                          icon: Icon(
                             Icons.edit,
                             color: Colors.orange,
                             ),
                           onPressed: () => edit(cabinet[index], context),
                         ),
-                        MaterialButton(
-                          minWidth: 5,
-                          child: Icon(
+                        IconButton(
+                          icon: Icon(
                             Icons.delete,
                             color: Colors.red,
                             ),
-                            // 
                           onPressed: (){
                             showDialog(
                               context: context,
