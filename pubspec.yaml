@@ -28,6 +28,8 @@ dependencies:
   sqflite:
   path_provider:
   fluttertoast:
+  local_auth:
+  flutter_local_notifications:
 
 dev_dependencies:
   flutter_test:
