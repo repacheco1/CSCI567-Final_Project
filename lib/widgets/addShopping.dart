@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:foodfficient/models/shoppingModel.dart';
-import 'package:foodfficient/models/shoppingHelper.dart';
+import 'package:foodfficient/models/shopping/shoppingModel.dart';
+import 'package:foodfficient/models/shopping/shoppingHelper.dart';
 import 'package:foodfficient/widgets/customTextField.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 

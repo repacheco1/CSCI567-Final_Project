@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:foodfficient/models/shoppingFunctions.dart';
-import 'package:foodfficient/models/shoppingModel.dart';
+import 'package:foodfficient/models/shopping/shoppingFunctions.dart';
+import 'package:foodfficient/models/shopping/shoppingModel.dart';
 import 'package:foodfficient/utils/shoppingListView.dart';
 import 'package:foodfficient/widgets/addShopping.dart';
 

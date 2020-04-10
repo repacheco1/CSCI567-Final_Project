@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import 'package:foodfficient/models/shoppingModel.dart';
+import 'package:foodfficient/models/shopping/shoppingModel.dart';
 
 class ShoppingHelper{
   static final ShoppingHelper _shoppingInstance = new ShoppingHelper.internal();

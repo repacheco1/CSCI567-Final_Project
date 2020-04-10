@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:foodfficient/models/pantryModel.dart';
-import 'package:foodfficient/models/pantryHelper.dart';
+import 'package:foodfficient/models/pantry/pantryModel.dart';
+import 'package:foodfficient/models/pantry/pantryHelper.dart';
 import 'package:foodfficient/widgets/customTextField.dart';
 import 'package:foodfficient/utils/datePicker.dart';
 import 'package:fluttertoast/fluttertoast.dart';

@@ -6,32 +6,34 @@ class ExpirationDateField {
   final format = DateFormat('yyyy-MM-dd');
   
   Widget build(BuildContext context, TextEditingController input) {
-    return Column(children: <Widget>[
-      Text(
-        'Expiration Date:',
-        style: TextStyle(
-          fontSize: 18,
+    return Column(
+      children: <Widget>[
+        Text(
+          'Expiration Date:',
+          style: TextStyle(
+            fontSize: 18,
+          ),
         ),
-      ),
-      DateTimeField(
-        decoration: new InputDecoration(
-          hintText: 'eg. ${DateFormat('yyyy-MM-dd').format(DateTime.now())}',
+        DateTimeField(
+          decoration: new InputDecoration(
+            hintText: 'eg. ${DateFormat('yyyy-MM-dd').format(DateTime.now())}',
+          ),
+          style: TextStyle(
+            fontSize: 18,
+          ),
+          controller: input,
+          format: format,
+          onShowPicker: (context, currentValue) {
+            return showDatePicker(
+              
+                context: context,
+                firstDate: DateTime(DateTime.now().year),
+                initialDate: currentValue ?? DateTime.now(),
+                lastDate: DateTime(DateTime.now().year + 20));
+          },
         ),
-        style: TextStyle(
-          fontSize: 18,
-        ),
-        controller: input,
-        format: format,
-        onShowPicker: (context, currentValue) {
-          return showDatePicker(
-            
-              context: context,
-              firstDate: DateTime(DateTime.now().year),
-              initialDate: currentValue ?? DateTime.now(),
-              lastDate: DateTime(DateTime.now().year + 20));
-        },
-      ),
-    ]);
+      ]
+    );
   }
 
 }

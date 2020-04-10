@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import 'package:foodfficient/models/pantryModel.dart';
+import 'package:foodfficient/models/pantry/pantryModel.dart';
 
 class PantryHelper{
   static final PantryHelper _pantryInstance = new PantryHelper.internal();

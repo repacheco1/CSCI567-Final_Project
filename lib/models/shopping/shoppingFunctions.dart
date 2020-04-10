@@ -1,5 +1,5 @@
-import 'package:foodfficient/models/shoppingHelper.dart';
-import 'package:foodfficient/models/shoppingModel.dart';
+import 'package:foodfficient/models/shopping/shoppingHelper.dart';
+import 'package:foodfficient/models/shopping/shoppingModel.dart';
 
 abstract class ShoppingContract{
     void screenUpdate();

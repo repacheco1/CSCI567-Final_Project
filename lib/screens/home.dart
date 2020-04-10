@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:foodfficient/models/pantryFunctions.dart';
-import 'package:foodfficient/models/pantryModel.dart';
+import 'package:foodfficient/models/pantry/pantryFunctions.dart';
+import 'package:foodfficient/models/pantry/pantryModel.dart';
 import 'package:foodfficient/utils/pantryListView.dart';
 import 'package:foodfficient/widgets/addItem.dart';
 

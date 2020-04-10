@@ -1,5 +1,5 @@
-import 'package:foodfficient/models/pantryHelper.dart';
-import 'package:foodfficient/models/pantryModel.dart';
+import 'package:foodfficient/models/pantry/pantryHelper.dart';
+import 'package:foodfficient/models/pantry/pantryModel.dart';
 
 abstract class PantryContract{
   void screenUpdate();
