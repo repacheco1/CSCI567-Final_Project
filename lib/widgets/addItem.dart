@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:foodfficient/models/pantry/pantryModel.dart';
 import 'package:foodfficient/models/pantry/pantryHelper.dart';
-import 'package:foodfficient/widgets/customTextField.dart';
-import 'package:foodfficient/utils/datePicker.dart';
+import 'package:foodfficient/widgets/customTextFormField.dart';
+import 'package:foodfficient/widgets/datePicker.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class AddPantryItem{
@@ -42,9 +42,18 @@ class AddPantryItem{
                 ),
               ),
               // String label, String hint, TextEditingController input, bool isFocus
-              CustomTextField().customTextField('Item Name:', 'eg. Milk', controllerName, true),
-              CustomTextField().customTextField('Item Quantity:', 'eg.2 Gallons', controllerQtyType),
-              ExpirationDateField().build(context, controllerExpDate),
+              customTextField(
+                'Item Name:', 
+                'eg. Milk', 
+                controllerName, 
+                true
+              ),
+              customTextField(
+                'Item Quantity:', 
+                'eg.2 Gallons', 
+                controllerQtyType
+              ),
+              expDatePicker(context, controllerExpDate),
               ButtonTheme(
                 child: ButtonBar(
                   alignment: MainAxisAlignment.center,

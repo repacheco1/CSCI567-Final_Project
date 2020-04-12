@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodfficient/models/shopping/shoppingModel.dart';
 import 'package:foodfficient/models/shopping/shoppingHelper.dart';
-import 'package:foodfficient/widgets/customTextField.dart';
+import 'package:foodfficient/widgets/customTextFormField.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class AddShoppingItem{
@@ -38,8 +38,17 @@ class AddShoppingItem{
                   ),
                 ),
               ),
-              CustomTextField().customTextField('Item Name:', 'eg. Avocado', controllerName, true),
-              CustomTextField().customTextField('Item Notes:', 'eg. To Make avocado toast', controllerNotes),
+              customTextField(
+                'Item Name:', 
+                'eg. Avocado', 
+                controllerName, 
+                true
+              ),
+              customTextField(
+                'Item Notes:', 
+                'eg. To Make avocado toast', 
+                controllerNotes
+              ),
               ButtonTheme(
                 child: ButtonBar(
                   alignment: MainAxisAlignment.center,
