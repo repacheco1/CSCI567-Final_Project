@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:foodfficient/utils/notifications.dart';
 
 class SettingsPage extends StatefulWidget{
   SettingsPage({Key key}) : super(key: key);
@@ -13,6 +14,7 @@ class SettingsPageState extends State<SettingsPage> {
   bool isSwitchedStore = false;
   bool isSwitchedInventory = false;
   bool isSwitchedExpire = false;
+  bool isSwitchedFinger = false;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,12 @@ class SettingsPageState extends State<SettingsPage> {
         child: new Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
+            Text(
+              'Welcome, user!',
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
             Text(
               'Notifications',
               style: TextStyle(
@@ -101,6 +109,36 @@ class SettingsPageState extends State<SettingsPage> {
                 }, 
                 activeColor: Colors.green,
                 secondary: Icon(Icons.access_time),
+              ),
+            ),
+            Text(
+              'Security',
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
+            Card(
+              child: SwitchListTile(
+                title: Text(
+                  'Fingerprint:',
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
+                subtitle: Text(
+                  'Avoid unwanted changes to your pantry and shopping list.',
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
+                value: isSwitchedFinger,
+                onChanged: (value){
+                  setState(() {
+                    isSwitchedFinger = value;
+                  });
+                }, 
+                activeColor: Colors.green,
+                secondary: Icon(Icons.fingerprint),
               ),
             ),
           ],
