@@ -36,7 +36,7 @@ class PantryList extends StatelessWidget{
                       backgroundColor: Colors.teal,
                     ),
                     title: Text(
-                      '${cabinet[index].name} ${cabinet[index].qtyType}',
+                      '${cabinet[index].name}, ${cabinet[index].qtyType}',
                       style: TextStyle(
                         fontSize: 20,
                       ),

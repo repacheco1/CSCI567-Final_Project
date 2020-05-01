@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';  
 // import 'package:foodfficient/utils/notifications.dart';
 
 class SettingsPage extends StatefulWidget{
@@ -11,10 +12,10 @@ class SettingsPage extends StatefulWidget{
 }
 
 class SettingsPageState extends State<SettingsPage> {
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
   bool isSwitchedStore = false;
   bool isSwitchedInventory = false;
-  bool isSwitchedExpire = false;
-  bool isSwitchedFinger = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +28,6 @@ class SettingsPageState extends State<SettingsPage> {
         child: new Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Text(
-              'Welcome, user!',
-              style: TextStyle(
-                fontSize: 20,
-              ),
-            ),
             Text(
               'Notifications',
               style: TextStyle(
@@ -57,6 +52,7 @@ class SettingsPageState extends State<SettingsPage> {
                 onChanged: (value){
                   setState(() {
                     isSwitchedStore = value;
+                    // switchActions();
                   });
                 }, 
                 activeColor: Colors.green,
@@ -87,64 +83,10 @@ class SettingsPageState extends State<SettingsPage> {
                 secondary: Icon(Icons.access_time),
               ),
             ),
-            Card(
-              child: SwitchListTile(
-                title: Text(
-                  'Items about the expire.',
-                  style: TextStyle(
-                    fontSize: 20,
-                  ),
-                ),
-                subtitle: Text(
-                  'You will receive a remainder if there are items closer to 3 days of their expiration date.',
-                  style: TextStyle(
-                    fontSize: 18,
-                  ),
-                ),
-                value: isSwitchedExpire,
-                onChanged: (value){
-                  setState(() {
-                    isSwitchedExpire = value;
-                  });
-                }, 
-                activeColor: Colors.green,
-                secondary: Icon(Icons.access_time),
-              ),
-            ),
-            Text(
-              'Security',
-              style: TextStyle(
-                fontSize: 20,
-              ),
-            ),
-            Card(
-              child: SwitchListTile(
-                title: Text(
-                  'Fingerprint:',
-                  style: TextStyle(
-                    fontSize: 20,
-                  ),
-                ),
-                subtitle: Text(
-                  'Avoid unwanted changes to your pantry and shopping list.',
-                  style: TextStyle(
-                    fontSize: 18,
-                  ),
-                ),
-                value: isSwitchedFinger,
-                onChanged: (value){
-                  setState(() {
-                    isSwitchedFinger = value;
-                  });
-                }, 
-                activeColor: Colors.green,
-                secondary: Icon(Icons.fingerprint),
-              ),
-            ),
           ],
         ),
       ),
     );
   }
-  
+
 }
