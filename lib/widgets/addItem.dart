@@ -50,7 +50,7 @@ class AddPantryItem{
               ),
               customTextField(
                 'Item Quantity:', 
-                'eg.2 Gallons', 
+                'eg. 2 Gallons', 
                 controllerQtyType
               ),
               expDatePicker(context, controllerExpDate),

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1063859328671",
+    "firebase_url": "https://foodfficient-e5c7f.firebaseio.com",
+    "project_id": "foodfficient-e5c7f",
+    "storage_bucket": "foodfficient-e5c7f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1063859328671:android:9e62120adf77c15de274aa",
+        "android_client_info": {
+          "package_name": "com.example.foodfficient"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1063859328671-tcf4cdulrtdasvruoddcpc1uts4rp8qu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.foodfficient",
+            "certificate_hash": "e191cf131e65efd6ecd2f3a8f31b302edea15e70"
+          }
+        },
+        {
+          "client_id": "1063859328671-2s7pf12q7dti7lfmphtjuq1rpggoespe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUkRAyOvAgpA6EcYjqqdxw4FjCmT-nu4E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1063859328671-2s7pf12q7dti7lfmphtjuq1rpggoespe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
